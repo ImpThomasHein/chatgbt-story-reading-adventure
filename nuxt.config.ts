@@ -2,7 +2,8 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
-    'nuxt-vuetify'
+    'nuxt-vuetify',
+    '@nuxtjs/i18n',
   ],
   vuetify: {
     /* vuetify options */

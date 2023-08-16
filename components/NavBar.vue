@@ -1,9 +1,16 @@
+<script setup>
+
+const title =  ref('');
+title.value = process.env.appName;
+
+</script>
+
 <template>
   <v-card>
     <v-toolbar color="primary">
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-      <v-toolbar-title></v-toolbar-title>
+      <v-toolbar-title>{{ title }}</v-toolbar-title>
 
       <v-spacer></v-spacer>
 

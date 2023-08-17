@@ -2,9 +2,24 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
-    'nuxt-vuetify',
-    '@nuxtjs/i18n',
+    "nuxt-vuetify",
+    "@nuxtjs/i18n",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/eslint-module",
+    "@pinia/nuxt",
   ],
+  eslint: {
+    cache: false,
+    fix: true,
+    extensions: ["ts", "vue"],
+  },
+  pinia: {
+    autoImports: [
+      // automatically imports `defineStore`
+      "defineStore", // import { defineStore } from 'pinia'
+      ["defineStore", "definePiniaStore"], // import { defineStore as definePiniaStore } from 'pinia'
+    ],
+  },
   vuetify: {
     /* vuetify options */
     vuetifyOptions: {
@@ -17,9 +32,9 @@ export default defineNuxtConfig({
       useIconCDN: false,
 
       /* vite-plugin-vuetify options */
-      styles: true ,
+      styles: true,
       autoImport: true,
-      useVuetifyLabs: true 
-    }
-  }
-})
+      useVuetifyLabs: true,
+    },
+  },
+});

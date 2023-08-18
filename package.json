@@ -16,15 +16,17 @@
     "@types/node": "^18.17.3",
     "eslint": "^8.47.0",
     "nuxt": "^3.6.5",
-    "nuxt-vuetify": "^1.0.1"
+    "nuxt-vuetify": "^1.0.1",
+    "prisma": "^5.1.1"
   },
   "dependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "pinia":"latest",
     "@pinia/nuxt": "^0.4.11",
+    "@prisma/client": "^5.1.1",
     "@typescript-eslint/parser": "^5.62.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
+    "pinia": "latest",
     "prettier": "^3.0.2",
     "typescript": "^5.1.6"
   },

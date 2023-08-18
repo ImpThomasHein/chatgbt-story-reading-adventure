@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useOverviewStore, Overview } from "@/composeables/stores/overview";
 
 const title = ref("Titel");
@@ -7,25 +7,28 @@ const overviewStore = useOverviewStore();
 
 const reachedPoints = computed(() => overviewStore.points);
 
-const textOfTheStory = ref(
-  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s",
-);
+const textOfTheStory = computed(() => overviewStore.latestStory?.story);
+
+const latestOverview = computed(() => overviewStore.latestStory);
 
 const answers = ["A", "B", "C", "D", "E", "F"];
 
 const increase = () => {
-  const entry = {
-    title: "Test",
-    points: 1,
+  const entry: Overview = {
+    id: 5,
+    title: "test",
     date: new Date(),
+    description: "Blub",
+    pointsReached: 1,
   };
 
-  overviewStore.ADD_ENTRY(entry);
+  overviewStore.UPDATE_ENTRY(entry);
 };
 </script>
 
 <template>
   <div>
+    {{ latestOverview }}
     <h1 class="text-2xl">{{ title }}</h1>
     <div class="mx-4 mt-2">
       <v-card class="rounded-md" variant="outlined elevated">

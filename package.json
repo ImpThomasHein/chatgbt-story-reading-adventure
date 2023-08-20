@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "Story Reading adventure",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -36,3 +36,27 @@
     "vue": "latest"
   }
 }
+# FILEPATH: .github/workflows/test-and-generate.yml
+name: Test and Generate
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-and-generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Generate file
+        run: npm run generate

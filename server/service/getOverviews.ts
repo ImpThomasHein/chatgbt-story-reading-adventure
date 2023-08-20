@@ -1,6 +1,6 @@
 import { Geschichte, PrismaClient } from "@prisma/client";
-import { Overview } from "../../composeables/stores/overview";
 import { useLogger } from "@nuxt/kit";
+import { Overview } from "../../composeables/stores/overview";
 
 const prisma = new PrismaClient();
 

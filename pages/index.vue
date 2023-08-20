@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getComputedOpenAIStory } from "./getComputedOpenAIStory";
 import { useOverviewStore, Overview } from "@/composeables/stores/overview";
 
 const title = ref("Titel");
@@ -8,8 +9,6 @@ const overviewStore = useOverviewStore();
 const reachedPoints = computed(() => overviewStore.points);
 
 const textOfTheStory = computed(() => overviewStore.latestStory?.story);
-
-const latestOverview = computed(() => overviewStore.latestStory);
 
 // await overviewStore.GET_GESCHICHTE();
 
@@ -34,11 +33,13 @@ const increase = () => {
 
   overviewStore.UPDATE_ENTRY(entry);
 };
+
+const currentOPENAIStory = await getComputedOpenAIStory();
 </script>
 
 <template>
   <div>
-    {{ latestOverview }}
+    {{ currentOPENAIStory }}
     <h1 class="text-2xl">{{ title }}</h1>
     <div class="mx-4 mt-2">
       <v-card class="rounded-md" variant="outlined elevated">

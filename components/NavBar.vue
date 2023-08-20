@@ -8,8 +8,8 @@ const overviewStore = useOverviewStore();
 
 const reachedPoints = computed(() => overviewStore.points);
 
-const createNewStory = () => {
-  overviewStore.CREATE_NEW_STORY();
+const createNewStory = async () => {
+  await overviewStore.CREATE_NEW_STORY();
   router.push("/");
 };
 </script>

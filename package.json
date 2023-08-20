@@ -1,5 +1,5 @@
 {
-  "name": "Story Reading adventure",
+  "name": "story-reading-adventure",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -20,7 +20,7 @@
     "prisma": "^5.1.1"
   },
   "dependencies": {
-    "@nuxt/kit": "latest",
+    "@nuxt/kit": "3.6.5",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@pinia/nuxt": "^0.4.11",
     "@prisma/client": "^5.1.1",

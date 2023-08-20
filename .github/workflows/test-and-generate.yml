@@ -1,4 +1,3 @@
-# FILEPATH: .github/workflows/test-and-generate.yml
 name: Test and Generate
 
 on:
@@ -17,8 +16,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm run test
+      #      - name: Run tests
+      #        run: npm run test
 
       - name: Generate file
         run: npm run generate

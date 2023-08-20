@@ -2,14 +2,15 @@ import { defineStore } from "pinia";
 
 export const UPDATE_ENTRY = "UPDATE_ENTRY";
 export const CREATE_NEW_STORY = "CREATE_NEW_STORY";
+export const GET_GESCHICHTE = "GET_GESCHICHTE";
 
 export interface Overview {
-  id: number;
-  title: String;
-  date: Date;
-  pointsReached: number;
-  hasPlayed: boolean;
-  story: String;
+  id?: number;
+  title?: string;
+  date?: Date;
+  pointsReached?: number;
+  hasPlayed?: boolean;
+  story?: string;
 }
 
 export const useOverviewStore = defineStore("overView", {
@@ -25,21 +26,29 @@ export const useOverviewStore = defineStore("overView", {
     },
   },
   actions: {
-    [UPDATE_ENTRY](entry: Overview): void {
-      this.overViews.push(entry);
+    async [GET_GESCHICHTE](): void {
+      this.overViews = await useFetch(`/api/geschichten`).data;
     },
-    [CREATE_NEW_STORY](): void {
+    async [UPDATE_ENTRY](entry: Overview): void {
+      await $fetch(`/api/geschichten`, {
+        method: "put",
+        body: entry,
+      });
+
+      this.GET_GESCHICHTE();
+    },
+    async [CREATE_NEW_STORY](): void {
       const newEntry: Overview = {
-        id: 20,
         title: "New Entry",
-        date: new Date(),
-        description: "New Description",
-        pointsReached: 0,
-        hasPlayed: false,
         story: "New Story",
       };
 
-      this.overViews.push(newEntry);
+      await $fetch(`/api/geschichten`, {
+        method: "post",
+        body: newEntry,
+      });
+      newEntry.id = result.id;
+      this.GET_GESCHICHTE();
     },
   },
 });

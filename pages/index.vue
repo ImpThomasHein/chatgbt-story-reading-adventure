@@ -11,14 +11,24 @@ const textOfTheStory = computed(() => overviewStore.latestStory?.story);
 
 const latestOverview = computed(() => overviewStore.latestStory);
 
+// await overviewStore.GET_GESCHICHTE();
+
 const answers = ["A", "B", "C", "D", "E", "F"];
+
+const giveCorrectAnswer = () => {
+  const entry: Overview = {
+    id: 5,
+    pointsReached: 3,
+  };
+
+  overviewStore.UPDATE_ENTRY(entry);
+};
 
 const increase = () => {
   const entry: Overview = {
     id: 5,
     title: "test",
     date: new Date(),
-    description: "Blub",
     pointsReached: 1,
   };
 
@@ -39,7 +49,11 @@ const increase = () => {
       <div class="mt-10">
         <h2>Bitte gebe deine Antwort ein:</h2>
         <div>
-          <v-btn v-for="answer in answers" :key="answer" class="mt-2 w-100"
+          <v-btn
+            v-for="answer in answers"
+            :key="answer"
+            class="mt-2 w-100"
+            @click="giveCorrectAnswer"
             ><p class="text-xl">{{ answer }}</p></v-btn
           >
         </div>
